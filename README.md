@@ -86,15 +86,12 @@ time. A wrongly deleted regression test can cost a production incident.
 
 ## Install
 
-Clone the repository and copy the skill directory into your Codex skills
-directory:
+### Codex
 
-```powershell
-git clone https://github.com/irerin07/red-green-prune.git
-Copy-Item -Recurse red-green-prune/skills/red-green-prune ~/.codex/skills/red-green-prune
+```bash
+codex plugin marketplace add irerin07/red-green-prune
+codex plugin add red-green-prune@red-green-prune
 ```
-
-On macOS or Linux, use `cp -R` instead of `Copy-Item -Recurse`.
 
 Start a new Codex session, then invoke the skill explicitly:
 
@@ -104,6 +101,24 @@ $red-green-prune implement case-insensitive username lookup
 
 Codex may also activate it automatically for TDD, test-first feature work, bug
 fixes, excessive tests, or over-engineered implementations.
+
+### Claude Code
+
+Send these as two separate prompts:
+
+```text
+/plugin marketplace add irerin07/red-green-prune
+```
+
+```text
+/plugin install red-green-prune@red-green-prune
+```
+
+Start a new session, then invoke the skill:
+
+```text
+/red-green-prune:red-green-prune implement case-insensitive username lookup
+```
 
 ## What it does not do
 

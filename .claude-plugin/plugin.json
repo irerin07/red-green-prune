@@ -1,0 +1,8 @@
+{
+  "name": "red-green-prune",
+  "description": "Test-first development without test bloat or speculative design.",
+  "author": {
+    "name": "irerin07",
+    "url": "https://github.com/irerin07"
+  }
+}
