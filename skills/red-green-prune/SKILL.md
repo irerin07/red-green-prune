@@ -60,7 +60,15 @@ Use a lower-level test only when the public test would be slow, unreliable, or
 unable to isolate the regression.
 
 Do not write the full test matrix before the first GREEN. Add one meaningful
-behavior at a time. If RED cannot be observed, state why; never fabricate it.
+behavior at a time. Do not batch independently failing rules into one RED. If
+each rule could fail while the others pass, choose one, reach GREEN, then
+repeat.
+
+Do not add a new passing test during RED unless it protects agreed behavior
+that the upcoming GREEN change could otherwise regress. Report it as a guard,
+not as RED.
+
+If RED cannot be observed, state why; never fabricate it.
 
 ## GREEN
 
