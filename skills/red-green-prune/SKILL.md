@@ -62,7 +62,9 @@ unable to isolate the regression.
 Do not write the full test matrix before the first GREEN. Add one meaningful
 behavior at a time. Do not batch independently failing rules into one RED. If
 each rule could fail while the others pass, choose one, reach GREEN, then
-repeat.
+repeat. Shared implementation does not merge them into one behavior. An
+implementation that satisfies only the selected behavior is not throwaway
+merely because a later cycle will extend or replace it.
 
 Do not add a new passing test during RED unless it protects agreed behavior
 that the upcoming GREEN change could otherwise regress. Report it as a guard,
@@ -72,8 +74,8 @@ If RED cannot be observed, state why; never fabricate it.
 
 ## GREEN
 
-Write the smallest production change satisfying both the failing test and the
-agreed behavior. Preserve existing contracts.
+Write the smallest production change satisfying the failing test and the
+agreed behavior selected for the current cycle. Preserve existing contracts.
 
 Reuse repository code, standard-library functionality, native platform
 behavior, and installed dependencies before adding infrastructure. Do not add
