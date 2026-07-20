@@ -72,9 +72,11 @@ cycle will extend or replace it.
 
 Do not add a new passing test during RED unless it protects agreed behavior
 that the upcoming GREEN change could otherwise regress. Report it as a guard,
-not as RED. A passing test added after implementation is a guard only if a
-later production change could regress it; otherwise test that behavior before
-implementation and observe RED.
+not as RED.
+
+A test protecting behavior introduced by the current task is not a guard; it
+required an observed RED. If such behavior was implemented without one, report
+the missed RED instead of relabeling the test as a guard.
 
 If RED cannot be observed, state why; never fabricate it.
 
