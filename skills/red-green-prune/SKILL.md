@@ -60,15 +60,22 @@ Use a lower-level test only when the public test would be slow, unreliable, or
 unable to isolate the regression.
 
 Do not write the full test matrix before the first GREEN. Add one meaningful
-behavior at a time. Do not batch independently failing rules into one RED. If
-each rule could fail while the others pass, choose one, reach GREEN, then
-repeat. Shared implementation does not merge them into one behavior. An
-implementation that satisfies only the selected behavior is not throwaway
-merely because a later cycle will extend or replace it.
+behavior at a time. Choose the smallest independently falsifiable rule or
+meaningful equivalence class for a cycle. Do not use an endpoint, happy path,
+calculation, or group of assertions as one behavior when any part could fail
+while the others pass.
+
+Do not batch independently failing rules into one RED. If each rule could fail
+while the others pass, choose one, reach GREEN, then repeat. Shared
+implementation does not merge them into one behavior. An implementation that
+satisfies only the selected behavior is not throwaway merely because a later
+cycle will extend or replace it.
 
 Do not add a new passing test during RED unless it protects agreed behavior
 that the upcoming GREEN change could otherwise regress. Report it as a guard,
-not as RED.
+not as RED. A passing test added after implementation is a guard only when a
+later production change could regress that behavior. Otherwise it is
+test-after: test the behavior before implementation and observe RED.
 
 If RED cannot be observed, state why; never fabricate it.
 
