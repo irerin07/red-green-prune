@@ -1,6 +1,5 @@
 {
   "name": "red-green-prune",
-  "version": "0.1.0",
   "description": "Test-first development without test bloat or speculative design.",
   "author": {
     "name": "irerin07",
