@@ -61,9 +61,8 @@ unable to isolate the regression.
 
 Do not write the full test matrix before the first GREEN. Add one meaningful
 behavior at a time. Choose the smallest independently falsifiable rule or
-meaningful equivalence class for a cycle. Do not use an endpoint, happy path,
-calculation, or group of assertions as one behavior when any part could fail
-while the others pass.
+meaningful equivalence class. An endpoint, happy path, calculation, or assertion
+group is not one behavior when any part could fail while others pass.
 
 Do not batch independently failing rules into one RED. If each rule could fail
 while the others pass, choose one, reach GREEN, then repeat. Shared
@@ -73,9 +72,9 @@ cycle will extend or replace it.
 
 Do not add a new passing test during RED unless it protects agreed behavior
 that the upcoming GREEN change could otherwise regress. Report it as a guard,
-not as RED. A passing test added after implementation is a guard only when a
-later production change could regress that behavior. Otherwise it is
-test-after: test the behavior before implementation and observe RED.
+not as RED. A passing test added after implementation is a guard only if a
+later production change could regress it; otherwise test that behavior before
+implementation and observe RED.
 
 If RED cannot be observed, state why; never fabricate it.
 
