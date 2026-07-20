@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "red-green-prune",
+  "description": "Test-first development without test bloat or speculative design.",
+  "owner": {
+    "name": "irerin07",
+    "url": "https://github.com/irerin07"
+  },
+  "plugins": [
+    {
+      "name": "red-green-prune",
+      "description": "Observe RED, implement the minimum GREEN, and prevent redundant tests.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}
