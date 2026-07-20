@@ -6,8 +6,9 @@ significant benchmarks.
 
 | Experiment | Scenario | Main observation | Resulting change |
 | --- | --- | --- | --- |
-| [001](001-quote-api.md) | Spring Boot quote API | Independent validation rules were batched into one RED/GREEN cycle | [PR #8](https://github.com/irerin07/red-green-prune/pull/8) |
-| [002](002-tax-calculation-api.md) | Spring Boot tax API | Batching repeated; a passing boundary test was added during RED | [PR #8](https://github.com/irerin07/red-green-prune/pull/8) |
+| [001](001-user-api.md) | Spring Boot user API | Setup failure was correctly rejected as RED; cycle granularity remained ambiguous | Baseline evidence; later addressed by [PR #8](https://github.com/irerin07/red-green-prune/pull/8) |
+| [002](002-quote-api.md) | Spring Boot quote API | Independent validation rules were batched into one RED/GREEN cycle | [PR #8](https://github.com/irerin07/red-green-prune/pull/8) |
+| [003](003-tax-calculation-api.md) | Spring Boot tax API | Batching repeated; a passing boundary test was added during RED | [PR #8](https://github.com/irerin07/red-green-prune/pull/8) |
 
 ## Recording policy
 
