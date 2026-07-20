@@ -3,8 +3,7 @@
   "name": "red-green-prune",
   "description": "Test-first development without test bloat or speculative design.",
   "owner": {
-    "name": "irerin07",
-    "url": "https://github.com/irerin07"
+    "name": "irerin07"
   },
   "plugins": [
     {
