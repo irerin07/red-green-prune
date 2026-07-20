@@ -2,7 +2,7 @@
 
 **TDD without test bloat or speculative design.**
 
-[?쒓뎅??(README.ko.md)
+[한국어](README.ko.md)
 
 Coding agents often implement first, add tests afterward, and still call it
 TDD. They over-specify edge cases, repeat equivalent tests, introduce
@@ -129,4 +129,3 @@ claims are made yet.
 ## License
 
 MIT
-
