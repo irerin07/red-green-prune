@@ -48,8 +48,9 @@ Use the smallest test change that exposes the missing behavior:
    clearly.
 
 Run it before changing production code. Confirm it fails because the requested
-behavior is missing, at the expected boundary, rather than because of setup,
-syntax, compilation, or an unrelated defect.
+behavior is missing at the expected boundary. For code that does not yet exist,
+a missing-symbol or compilation failure at that boundary is valid RED. Setup,
+syntax, and unrelated failures are not.
 
 A passing existing test is not RED. If relevant tests already pass, determine
 whether the behavior exists or the new requirement is not yet expressed.
@@ -174,8 +175,13 @@ metadata synchronization with a deterministic validator. Make the smallest
 change and run the smallest relevant verification; do not invent a behavioral
 test merely to satisfy the workflow.
 
-If no runnable test environment exists, do not introduce one unless requested.
-Perform the strongest available check and state the limitation.
+If no runnable test environment exists in an established repository, do not
+introduce one unless requested. Perform the strongest available check and state
+the limitation. For a new project, establish the minimum runnable test
+environment during ALIGN before the first RED. Ask the user when the choice
+materially determines the project stack; otherwise prefer the ecosystem's
+standard or already selected test tooling. Establishing the environment is not
+GREEN: do not implement requested behavior while setting it up.
 
 Do not treat a flaky failure as RED. Separate unrelated pre-existing failures
 from the requested work.
