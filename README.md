@@ -117,7 +117,7 @@ Send these as two separate prompts:
 Start a new session, then invoke the skill:
 
 ```text
-/red-green-prune implement case-insensitive username lookup
+/red-green-prune:red-green-prune implement case-insensitive username lookup
 ```
 
 ## What it does not do
