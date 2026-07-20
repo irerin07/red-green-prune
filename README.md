@@ -2,6 +2,8 @@
 
 **TDD without test bloat or speculative design.**
 
+[?쒓뎅??(README.ko.md)
+
 Coding agents often implement first, add tests afterward, and still call it
 TDD. They over-specify edge cases, repeat equivalent tests, introduce
 abstractions before they are needed, and copy annotations because neighboring
@@ -87,12 +89,12 @@ time. A wrongly deleted regression test can cost a production incident.
 Clone the repository and copy the skill directory into your Codex skills
 directory:
 
-```text
+```powershell
 git clone https://github.com/irerin07/red-green-prune.git
-copy red-green-prune/skills/red-green-prune ~/.codex/skills/red-green-prune
+Copy-Item -Recurse red-green-prune/skills/red-green-prune ~/.codex/skills/red-green-prune
 ```
 
-On macOS or Linux, use `cp -R` instead of `copy`.
+On macOS or Linux, use `cp -R` instead of `Copy-Item -Recurse`.
 
 Start a new Codex session, then invoke the skill explicitly:
 
