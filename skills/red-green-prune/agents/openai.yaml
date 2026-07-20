@@ -1,0 +1,4 @@
+interface:
+  display_name: "Red Green Prune"
+  short_description: "Disciplined TDD without test bloat"
+  default_prompt: "Use $red-green-prune to implement this behavior with disciplined test-first development."
