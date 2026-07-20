@@ -1,4 +1,4 @@
-# Experiment 002: Tax Calculation API
+# Experiment 003: Tax Calculation API
 
 ## Request
 
@@ -55,7 +55,7 @@ upcoming GREEN change could regress, but it must not be reported as RED.
 ## Result
 
 This repeated the batching found in
-[Experiment 001](001-quote-api.md) and supplied direct evidence for both PR #8
+[Experiment 002](002-quote-api.md) and supplied direct evidence for both PR #8
 rules:
 
 > Do not batch independently failing rules into one RED. If each rule could fail

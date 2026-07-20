@@ -1,4 +1,4 @@
-# Experiment 001: Quote API
+# Experiment 002: Quote API
 
 ## Request
 
@@ -47,7 +47,7 @@ minimum GREEN change, then repeat for the next rule.
 ## Result
 
 Together with the repeated observation in
-[Experiment 002](002-tax-calculation-api.md), this produced the PR #8 rule:
+[Experiment 003](003-tax-calculation-api.md), this produced the PR #8 rule:
 
 > Do not batch independently failing rules into one RED. If each rule could fail
 > while the others pass, choose one, reach GREEN, then repeat.
