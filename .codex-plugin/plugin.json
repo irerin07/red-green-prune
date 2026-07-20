@@ -1,0 +1,28 @@
+{
+  "name": "red-green-prune",
+  "version": "0.1.0",
+  "description": "Test-first development without test bloat or speculative design.",
+  "author": {
+    "name": "irerin07",
+    "url": "https://github.com/irerin07"
+  },
+  "homepage": "https://github.com/irerin07/red-green-prune",
+  "repository": "https://github.com/irerin07/red-green-prune",
+  "license": "MIT",
+  "keywords": ["tdd", "testing", "simplicity", "productivity"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Red Green Prune",
+    "shortDescription": "TDD without test bloat",
+    "longDescription": "Observe RED, implement the minimum GREEN, refactor proven problems, and prune only redundant tests introduced in the current task.",
+    "developerName": "irerin07",
+    "category": "Productivity",
+    "capabilities": ["Instructions"],
+    "websiteURL": "https://github.com/irerin07/red-green-prune",
+    "defaultPrompt": [
+      "Use Red Green Prune to implement this behavior.",
+      "Fix this bug test-first without adding redundant tests.",
+      "Review this change for over-engineering and test bloat."
+    ]
+  }
+}
