@@ -2,45 +2,129 @@
 
 **TDD without test bloat or speculative design.**
 
-Red Green Prune guides coding agents through a disciplined cycle:
+Coding agents often implement first, add tests afterward, and still call it
+TDD. They over-specify edge cases, repeat equivalent tests, introduce
+abstractions before they are needed, and copy annotations because neighboring
+code has them.
+
+Red Green Prune gives the agent a stricter, smaller loop:
 
 ```text
 ALIGN -> RED -> GREEN -> REFACTOR -> PRUNE
 ```
 
-It requires a meaningful failing test before implementation, keeps production
-changes minimal, and prevents redundant tests introduced during the current
-task. Historical tests are never deleted during ordinary feature or bug work.
+Understand the behavior. Observe a real failure. Make the smallest change that
+passes. Improve only what the change proves necessary. Prevent new test bloat.
+
+## Before / after
+
+You ask for case-insensitive username lookup.
+
+Without Red Green Prune, an agent may implement the feature immediately, add
+several tests afterward, introduce a `UsernameNormalizer` abstraction, and
+copy annotations from adjacent classes for consistency.
+
+With Red Green Prune:
+
+```text
+ALIGN     Read the lookup path and existing tests; resolve semantics from the repo.
+RED       Extend the nearest test and observe the expected failure.
+GREEN     Make the existing comparison case-insensitive.
+REFACTOR  Nothing proven necessary, so change nothing.
+PRUNE     Keep the test that demonstrated RED; add no equivalent cases.
+```
+
+The result is actual test-first development with less production code and
+fewer tests, not a larger process wrapped around the same implementation.
+
+## How it works
+
+### ALIGN
+
+Read the affected code, callers, and nearest tests before editing. Ask only
+when different answers would materially change public behavior, data,
+security, compatibility, persistence, or meaningful UX. Resolve facts that are
+already in the repository without asking the user.
+
+### RED
+
+Prefer the smallest test change: use an existing relevant failure, extend the
+nearest test, or add one focused test. Run it before production changes and
+confirm it fails because the requested behavior is missing.
+
+### GREEN
+
+Write the smallest production change satisfying the failing test, agreed
+behavior, and existing contracts. Avoid speculative abstractions,
+configuration, dependencies, fallbacks, annotations, and unrelated cleanup.
+
+### REFACTOR
+
+Refactor only while tests are green and only when the current change exposes a
+real design problem. Similar-looking code is not automatically shared code.
+
+### PRUNE
+
+Prevent redundant tests introduced during the current task. Keep distinct
+behaviors, boundaries, equivalence classes, regressions, security rules, and
+failure modes.
+
+## Prune, safely
+
+Red Green Prune prevents new test bloat. It does not autonomously clean
+historical test suites.
+
+During ordinary feature or bug work, the agent must not delete, disable, or
+weaken a pre-existing test. Suspected historical duplicates are reported
+separately. Removing them requires an explicit cleanup request; high-risk tests
+also require evidence and approval.
+
+This restriction is deliberate. An extra historical test costs maintenance
+time. A wrongly deleted regression test can cost a production incident.
 
 ## Install
 
-Copy `skills/red-green-prune` into your agent's skills directory. For Codex:
+Clone the repository and copy the skill directory into your Codex skills
+directory:
 
 ```text
-~/.codex/skills/red-green-prune/
+git clone https://github.com/irerin07/red-green-prune.git
+copy red-green-prune/skills/red-green-prune ~/.codex/skills/red-green-prune
 ```
 
-Then invoke it explicitly:
+On macOS or Linux, use `cp -R` instead of `copy`.
+
+Start a new Codex session, then invoke the skill explicitly:
 
 ```text
-$red-green-prune implement this behavior
+$red-green-prune implement case-insensitive username lookup
 ```
 
 Codex may also activate it automatically for TDD, test-first feature work, bug
 fixes, excessive tests, or over-engineered implementations.
 
-## What it enforces
+## What it does not do
 
-- Clarify only decisions that materially affect behavior or contracts.
-- Observe RED before changing production code.
-- Write the smallest GREEN implementation.
-- Refactor only proven problems while tests remain green.
-- Prevent new test duplication without deleting historical coverage.
-- Report the commands and results that prove RED and GREEN.
+- It does not require RED for documentation, formatting, generated files,
+  mechanical renames, or deletion of proven-dead code.
+- It does not create a test framework when the repository has none.
+- It does not delete historical coverage during ordinary implementation work.
+- It does not implement optional improvements after the requirement is met.
+- It does not claim TDD when the RED step was not observed.
 
 The complete workflow is defined in
 [`skills/red-green-prune/SKILL.md`](skills/red-green-prune/SKILL.md).
 
+## Status
+
+This is the initial release. The intended outcomes are better RED-before-GREEN
+compliance, less speculative production code, and fewer redundant tests
+introduced per task without reducing correctness or safety.
+
+Benchmarks for LOC, tokens, cost, time, and safety are planned. No performance
+claims are made yet.
+
 ## License
 
 MIT
+
