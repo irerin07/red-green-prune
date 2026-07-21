@@ -11,6 +11,8 @@ significant benchmarks.
 | [003](003-tax-calculation-api.md) | Spring Boot tax API | Batching repeated; a passing boundary test was added during RED | [PR #8](https://github.com/irerin07/red-green-prune/pull/8) |
 | [004](004-vip20-guided.md) | VIP20 quote extension | Explicit workflow instructions produced compliant separate cycles | Guided baseline; no skill change |
 | [005](005-vip25-skill-driven.md) | VIP25 quote extension | Shared implementation and “throwaway” arguments overrode per-cycle scoping | [PR #11](https://github.com/irerin07/red-green-prune/pull/11) |
+| [006](006-shipping-quote-api.md) | Shipping quote API | “Happy path” batched independent rules; test-after coverage was relabeled as guards | [PR #13](https://github.com/irerin07/red-green-prune/pull/13) |
+| [007](007-hotel-quote-api.md) | Hotel quote API | Guard and validation behavior improved, but explicit happy-path batching persisted | Evidence for restructuring RED, not another rule |
 
 ## Recording policy
 
