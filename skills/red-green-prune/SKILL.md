@@ -70,12 +70,15 @@ implementation does not merge them into one behavior. An implementation that
 satisfies only the selected behavior is not throwaway merely because a later
 cycle will extend or replace it.
 
-Before GREEN, confirm that the selected test scope can distinguish a correct
-implementation of the selected rule from plausible nearby defects, such as a
-wrong boundary operator, format, rounding mode, or response shape. A selected
-rule may require multiple cases only when they jointly distinguish the same
-boundary or meaningful equivalence rule. The scope is valid RED when at least
-one case fails because that rule is missing.
+Before any production edit for a cycle, pass the RED gate: name one selected
+rule, identify a plausible nearby defect, build the smallest test scope that
+distinguishes a correct implementation, and run it. Continue only when at least
+one case fails because that rule is missing. Multiple cases are allowed only
+when they jointly distinguish the same boundary or meaningful equivalence rule.
+
+Do not implement, revert, or mutate production code to manufacture RED. If the
+behavior was already implemented, report the missed RED. A later mutation may
+prove test sensitivity, but it is not TDD evidence.
 
 Do not add a new passing test during RED unless it belongs to the current
 rule's test scope or protects agreed behavior that the upcoming GREEN change
