@@ -117,3 +117,19 @@ This experiment produced
 The change requires a fixed checkpoint, limits absent-boundary RED to the
 selected assertion, rejects future-rule placeholders, and avoids mutation
 performed only to compensate for a missed RED.
+
+## Review follow-up
+
+Post-merge review found that Experiment 011 supported honest classification of
+later rules, but not an absolute ban on placeholder values. Such a ban could
+force nullable response types, sentinel values, or temporary production
+structures merely to keep later rules incomplete, increasing LOC and time while
+conflicting with minimal GREEN.
+
+The corrected policy defers later behavior when that needs no extra production
+structure. When the selected GREEN unavoidably satisfies another rule, it
+requires a missed-RED report instead of artificial scaffolding, manufactured
+failure, or a test-first claim.
+
+This correction produced
+[PR #19 — Allow unavoidable GREEN scaffolding](https://github.com/irerin07/red-green-prune/pull/19).
