@@ -99,10 +99,11 @@ If RED cannot be observed, state why; never fabricate it.
 Write the smallest production change satisfying the failing test and the
 agreed behavior selected for the current cycle. Preserve existing contracts.
 
-Scaffolding for the selected rule does not authorize later rules. Do not
-hard-code specified outputs or add constants, branches, annotations, formats,
-or policies for unselected rules as placeholders. Leave later behavior
-incomplete until its own RED gate.
+Scaffolding does not provide RED evidence for later rules. Defer unselected
+behavior when the selected rule can stay runnable without extra production
+structure. If the current GREEN unavoidably satisfies a later rule, report that
+rule as missed RED; do not add artificial scaffolding, manufacture failure, or
+claim test-first.
 
 Reuse repository code, standard-library functionality, native platform
 behavior, and installed dependencies before adding infrastructure. Do not add
