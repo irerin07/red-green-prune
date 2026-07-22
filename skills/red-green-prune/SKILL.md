@@ -70,13 +70,22 @@ implementation does not merge them into one behavior. An implementation that
 satisfies only the selected behavior is not throwaway merely because a later
 cycle will extend or replace it.
 
-Do not add a new passing test during RED unless it protects agreed behavior
-that the upcoming GREEN change could otherwise regress. Report it as a guard,
-not as RED.
+Before GREEN, confirm that the selected test scope can distinguish a correct
+implementation of the selected rule from plausible nearby defects, such as a
+wrong boundary operator, format, rounding mode, or response shape. A selected
+rule may require multiple cases only when they jointly distinguish the same
+boundary or meaningful equivalence rule. The scope is valid RED when at least
+one case fails because that rule is missing.
 
-A test protecting behavior introduced by the current task is not a guard; it
-required an observed RED. If such behavior was implemented without one, report
-the missed RED instead of relabeling the test as a guard.
+Do not add a new passing test during RED unless it belongs to the current
+rule's test scope or protects agreed behavior that the upcoming GREEN change
+could otherwise regress. Report the former as a passing scope member, not as a
+separate RED or guard; report the latter as a guard.
+
+A test protecting behavior introduced by the current task is not a guard. Its
+scope must have observed RED before implementation. If that behavior was
+implemented without an observed RED for its scope, report the missed RED
+instead of relabeling the test as a guard.
 
 If RED cannot be observed, state why; never fabricate it.
 
