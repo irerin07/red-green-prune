@@ -15,6 +15,7 @@ significant benchmarks.
 | [007](007-hotel-quote-api.md) | Hotel quote API | Guard and validation behavior improved, but explicit happy-path batching persisted | Evidence for restructuring RED, not another rule |
 | [008](008-payroll-calculation-api.md) | Payroll calculation API | Calculation and validation cycles separated; contract-falsifying assertions remained incomplete | Evidence only; no skill change |
 | [009](009-commission-calculation-api.md) | Commission calculation API | Discriminating examples improved tests; a task-new boundary case was relabeled as a guard | [PR #16](https://github.com/irerin07/red-green-prune/pull/16) |
+| [010](010-rebate-calculation-api.md) | Rebate calculation API | Scope composition and self-derived defects improved; late production mutation was reported as RED | [PR #17](https://github.com/irerin07/red-green-prune/pull/17) |
 
 ## Recording policy
 
