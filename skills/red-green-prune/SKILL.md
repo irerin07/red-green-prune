@@ -70,15 +70,22 @@ implementation does not merge them into one behavior. An implementation that
 satisfies only the selected behavior is not throwaway merely because a later
 cycle will extend or replace it.
 
-Before any production edit for a cycle, pass the RED gate: name one selected
-rule, identify a plausible nearby defect, build the smallest test scope that
-distinguishes a correct implementation, and run it. Continue only when at least
-one case fails because that rule is missing. Multiple cases are allowed only
-when they jointly distinguish the same boundary or meaningful equivalence rule.
+Before any production edit for a cycle, record and pass this concise
+checkpoint: `RED gate — rule: ...; nearby defect: ...; scope: ...; command: ...;
+observed: ...`. Continue only when the scope distinguishes a correct
+implementation from the named defect and at least one case fails because the
+selected rule is missing. Do not proceed when the scope asserts independently
+falsifiable rules; split the cycle first. Multiple cases are allowed only when
+they jointly distinguish the same boundary or meaningful equivalence rule.
+
+When an absent endpoint, route, class, or symbol blocks the scope, count RED
+only for the selected assertion whose nearby defect the scope distinguishes.
+Assertions blocked behind that absence are not RED evidence for their rules.
 
 Do not implement, revert, or mutate production code to manufacture RED. If the
-behavior was already implemented, report the missed RED. A later mutation may
-prove test sensitivity, but it is not TDD evidence.
+behavior was already implemented, report the missed RED. Do not run a mutation
+merely to compensate unless the user requested it or the risk independently
+justifies it; any later mutation is sensitivity evidence, not TDD evidence.
 
 Do not add a new passing test during RED unless it belongs to the current
 rule's test scope or protects agreed behavior that the upcoming GREEN change
@@ -96,6 +103,11 @@ If RED cannot be observed, state why; never fabricate it.
 
 Write the smallest production change satisfying the failing test and the
 agreed behavior selected for the current cycle. Preserve existing contracts.
+
+Scaffolding for the selected rule does not authorize later rules. Do not
+hard-code specified outputs or add constants, branches, annotations, formats,
+or policies for unselected rules as placeholders. Leave later behavior
+incomplete until its own RED gate.
 
 Reuse repository code, standard-library functionality, native platform
 behavior, and installed dependencies before adding infrastructure. Do not add
