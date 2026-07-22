@@ -130,3 +130,6 @@ The corrected policy defers later behavior when that needs no extra production
 structure. When the selected GREEN unavoidably satisfies another rule, it
 requires a missed-RED report instead of artificial scaffolding, manufactured
 failure, or a test-first claim.
+
+This correction produced
+[PR #19 — Allow unavoidable GREEN scaffolding](https://github.com/irerin07/red-green-prune/pull/19).
