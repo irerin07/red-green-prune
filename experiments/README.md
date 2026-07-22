@@ -16,6 +16,7 @@ significant benchmarks.
 | [008](008-payroll-calculation-api.md) | Payroll calculation API | Calculation and validation cycles separated; contract-falsifying assertions remained incomplete | Evidence only; no skill change |
 | [009](009-commission-calculation-api.md) | Commission calculation API | Discriminating examples improved tests; a task-new boundary case was relabeled as a guard | [PR #16](https://github.com/irerin07/red-green-prune/pull/16) |
 | [010](010-rebate-calculation-api.md) | Rebate calculation API | Scope composition and self-derived defects improved; late production mutation was reported as RED | [PR #17](https://github.com/irerin07/red-green-prune/pull/17) |
+| [011](011-royalty-calculation-api.md) | Royalty calculation API | Mutation honesty improved, but the pre-edit gate was skipped and placeholders implemented later rules early | [PR #18](https://github.com/irerin07/red-green-prune/pull/18) |
 
 ## Recording policy
 
