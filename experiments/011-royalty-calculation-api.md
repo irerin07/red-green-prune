@@ -112,7 +112,8 @@ It did not make the gate operational. The agent skipped the checkpoint, reused
 one missing-symbol failure for multiple blocked rules, and used placeholders to
 implement future behavior before its gate.
 
-This experiment therefore supports a compact execution-level follow-up:
-require the checkpoint in a fixed format, limit absent-boundary RED to the
-selected reachable assertion, reject future-rule placeholders, and avoid
-unrequested mutation performed only to compensate for a missed RED.
+This experiment produced
+[PR #18 — Make the RED cycle checkpoint operational](https://github.com/irerin07/red-green-prune/pull/18).
+The change requires a fixed checkpoint, limits absent-boundary RED to the
+selected assertion, rejects future-rule placeholders, and avoids mutation
+performed only to compensate for a missed RED.
