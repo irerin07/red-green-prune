@@ -59,24 +59,19 @@ For a bug, reproduce the failure through the closest stable public boundary.
 Use a lower-level test only when the public test would be slow, unreliable, or
 unable to isolate the regression.
 
-Do not write the full test matrix before the first GREEN. Add one meaningful
-behavior at a time. Choose the smallest independently falsifiable rule or
-meaningful equivalence class. An endpoint, happy path, calculation, or assertion
-group is not one behavior when any part could fail while others pass.
+Do not write the full test matrix before the first GREEN. Add the smallest
+independently falsifiable rule or meaningful equivalence class at a time. An
+endpoint, happy path, calculation, or assertion group is not one rule when any
+part could fail while others pass. Shared implementation and later extension
+do not justify batching.
 
-Do not batch independently failing rules into one RED. If each rule could fail
-while the others pass, choose one, reach GREEN, then repeat. Shared
-implementation does not merge them into one behavior. An implementation that
-satisfies only the selected behavior is not throwaway merely because a later
-cycle will extend or replace it.
-
-Before any production edit for a cycle, record and pass this concise
-checkpoint: `RED gate — rule: ...; nearby defect: ...; scope: ...; command: ...;
-observed: ...`. Continue only when the scope distinguishes a correct
+Before any production edit for a cycle, record:
+`RED gate — rule: ...; nearby defect: ...; scope: ...; command: ...; observed:
+...`. Run the scope. Continue only when it distinguishes a correct
 implementation from the named defect and at least one case fails because the
-selected rule is missing. Do not proceed when the scope asserts independently
-falsifiable rules; split the cycle first. Multiple cases are allowed only when
-they jointly distinguish the same boundary or meaningful equivalence rule.
+selected rule is missing. If asserted rules could fail independently, split
+them and repeat after GREEN. Multiple cases are allowed only when they jointly
+distinguish the same boundary or meaningful equivalence rule.
 
 When an absent endpoint, route, class, or symbol blocks the scope, count RED
 only for the selected assertion whose nearby defect the scope distinguishes.
