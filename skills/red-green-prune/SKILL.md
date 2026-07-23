@@ -65,13 +65,15 @@ endpoint, happy path, calculation, or assertion group is not one rule when any
 part could fail while others pass. Shared implementation and later extension
 do not justify batching.
 
-Before any production edit for a cycle, record:
-`RED gate — rule: ...; nearby defect: ...; scope: ...; command: ...; observed:
-...`. Run the scope. Continue only when it distinguishes a correct
-implementation from the named defect and at least one case fails because the
-selected rule is missing. If asserted rules could fail independently, split
-them and repeat after GREEN. Multiple cases are allowed only when they jointly
-distinguish the same boundary or meaningful equivalence rule.
+For each cycle, state the selected rule and smallest distinguishing scope, run
+it, then record before editing production:
+`RED observed — rule: ...; scope: ...; failure: ...`.
+Continue only when the scope distinguishes a correct implementation from a
+plausible nearby defect and the failure is caused by the missing selected rule.
+If asserted rules could fail independently, split them and repeat after GREEN.
+Multiple cases are allowed only when they jointly distinguish the same boundary
+or meaningful equivalence rule. The executed test command is evidence; do not
+restate it.
 
 When an absent endpoint, route, class, or symbol blocks the scope, count RED
 only for the selected assertion whose nearby defect the scope distinguishes.
