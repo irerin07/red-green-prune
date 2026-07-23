@@ -39,31 +39,38 @@ PRUNE     Keep the test that demonstrated RED; add no equivalent cases.
 The result is actual test-first development with less production code and
 fewer tests, not a larger process wrapped around the same implementation.
 
+## Modular skills
+
+The workflow is split by responsibility so agents load only the policy needed
+for the current task:
+
+| Skill | Responsibility | Use it for |
+| --- | --- | --- |
+| `red-green-prune` | Thin entry point and routing | The complete workflow |
+| `test-first-cycle` | ALIGN, honest RED evidence, one-rule cycles | Features, fixes, APIs, calculations, validation |
+| `minimal-change` | Minimum GREEN and restrained REFACTOR | Implementation, over-engineering, unnecessary annotations |
+| `test-prune` | Duplicate-test evidence and deletion safety | Overlapping new tests or explicit test cleanup |
+
+A normal behavior change uses `test-first-cycle` and `minimal-change`.
+`test-prune` is loaded only when tests may overlap or cleanup is requested.
+Moving the rules into independent skills reduces routine context without
+hiding all of them behind references that would still be loaded together.
+
 ## How it works
 
-### ALIGN
+### ALIGN and RED
 
-Read the affected code, callers, and nearest tests before editing. Ask only
-when different answers would materially change public behavior, data,
-security, compatibility, persistence, or meaningful UX. Resolve facts that are
-already in the repository without asking the user.
+Read the affected code, callers, and nearest tests before editing. Resolve
+repository facts, select one independently falsifiable rule, and observe a
+real failure before changing production code. Passing tests, guards, and
+missed RED are reported honestly rather than relabeled as TDD evidence.
 
-### RED
+### GREEN and REFACTOR
 
-Prefer the smallest test change: use an existing relevant failure, extend the
-nearest test, or add one focused test. Run it before production changes and
-confirm it fails because the requested behavior is missing.
-
-### GREEN
-
-Write the smallest production change satisfying the failing test, agreed
-behavior, and existing contracts. Avoid speculative abstractions,
-configuration, dependencies, fallbacks, annotations, and unrelated cleanup.
-
-### REFACTOR
-
-Refactor only while tests are green and only when the current change exposes a
-real design problem. Similar-looking code is not automatically shared code.
+Write the smallest production change satisfying the selected rule and existing
+contracts. Avoid speculative abstractions, configuration, dependencies,
+fallbacks, annotations, and unrelated cleanup. Refactor only while tests are
+green and the current change proves a design problem exists.
 
 ### PRUNE
 
@@ -93,14 +100,13 @@ codex plugin marketplace add irerin07/red-green-prune
 codex plugin add red-green-prune@red-green-prune
 ```
 
-Start a new Codex session, then invoke the skill explicitly:
+Start a new Codex session, then invoke the complete workflow explicitly:
 
 ```text
 $red-green-prune implement case-insensitive username lookup
 ```
 
-Codex may also activate it automatically for TDD, test-first feature work, bug
-fixes, excessive tests, or over-engineered implementations.
+Codex may also activate a focused skill automatically from the task.
 
 ### Claude Code
 
@@ -114,32 +120,48 @@ Send these as two separate prompts:
 /plugin install red-green-prune@red-green-prune
 ```
 
-Start a new session, then invoke the skill:
+Start a new session, then invoke the complete workflow:
 
 ```text
 /red-green-prune:red-green-prune implement case-insensitive username lookup
 ```
 
+Or invoke one responsibility directly:
+
+```text
+/red-green-prune:test-first-cycle
+/red-green-prune:minimal-change
+/red-green-prune:test-prune
+```
+
+After updating the plugin, start a new session so Claude Code discovers the
+latest skill files.
+
 ## What it does not do
 
 - It does not require RED for documentation, formatting, generated files,
   mechanical renames, or deletion of proven-dead code.
-- It does not create a test framework when the repository has none.
+- It does not create a test framework in an established repository unless
+  requested; a new project receives the smallest conventional test harness.
 - It does not delete historical coverage during ordinary implementation work.
 - It does not implement optional improvements after the requirement is met.
 - It does not claim TDD when the RED step was not observed.
 
-The complete workflow is defined in
-[`skills/red-green-prune/SKILL.md`](skills/red-green-prune/SKILL.md).
+The skill definitions are:
+
+- [`skills/red-green-prune/SKILL.md`](skills/red-green-prune/SKILL.md)
+- [`skills/test-first-cycle/SKILL.md`](skills/test-first-cycle/SKILL.md)
+- [`skills/minimal-change/SKILL.md`](skills/minimal-change/SKILL.md)
+- [`skills/test-prune/SKILL.md`](skills/test-prune/SKILL.md)
 
 ## Status
 
-This is the initial release. The intended outcomes are better RED-before-GREEN
-compliance, less speculative production code, and fewer redundant tests
-introduced per task without reducing correctness or safety.
+The rules are developed from recorded field experiments. See
+[`experiments/`](experiments/) for observations and the changes they produced.
+These are evidence notes, not statistically significant benchmark claims.
 
-Benchmarks for LOC, tokens, cost, time, and safety are planned. No performance
-claims are made yet.
+LOC, tokens, cost, time, and safety benchmarks are still planned. No
+performance claims are made yet.
 
 ## License
 
