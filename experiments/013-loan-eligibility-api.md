@@ -103,4 +103,5 @@ No SKILL.md change follows from this experiment. Adding more wording would
 duplicate existing policy and increase the attention cost. A smaller follow-up
 experiment should isolate cycle separation and guard classification. If the
 same violations recur, the evidence supports splitting responsibilities rather
-than adding another rule.
+than adding another rule. This evidence was recorded in
+[PR #21 — Record loan eligibility experiment](https://github.com/irerin07/red-green-prune/pull/21).
