@@ -81,4 +81,5 @@ minimal GREEN, RED reporting, and test pruning. The violations from Experiment
 No SKILL.md change follows. This is the first clean stabilization pass after
 Experiment 013. One more comparable no-change pass is required before treating
 the relevant policy as stable enough for responsibility-based skill
-separation.
+separation. This evidence was recorded in
+[PR #22 — Record application decisions experiment](https://github.com/irerin07/red-green-prune/pull/22).
