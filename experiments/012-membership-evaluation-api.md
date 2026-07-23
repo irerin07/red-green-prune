@@ -87,4 +87,5 @@ The resulting change replaces it with a three-field post-run checkpoint:
 `rule`, `scope`, and actual `failure`. The command remains execution evidence,
 and nearby-defect discrimination remains a semantic requirement rather than a
 mandatory narrative field. No structural split or unrelated rule change is
-included.
+included. This produced
+[PR #20 — Simplify the RED evidence checkpoint](https://github.com/irerin07/red-green-prune/pull/20).
