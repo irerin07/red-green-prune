@@ -20,6 +20,7 @@ significant benchmarks.
 | [012](012-membership-evaluation-api.md) | Membership evaluation API | Seven focused cycles passed; the five-field checkpoint was repeatedly abbreviated without harming behavior | [PR #20](https://github.com/irerin07/red-green-prune/pull/20) |
 | [013](013-loan-eligibility-api.md) | Loan eligibility API | RED sequencing improved, but independent rules were batched and task-new tests were relabeled as guards | Evidence only; no skill change ([PR #21](https://github.com/irerin07/red-green-prune/pull/21)) |
 | [014](014-application-decisions-api.md) | Application decisions API | Cycle separation, boundary scoping, and RED reporting passed in a focused scenario | Evidence only; no skill change ([PR #22](https://github.com/irerin07/red-green-prune/pull/22)) |
+| [015](015-program-eligibility-api.md) | Program eligibility API | Slightly higher complexity revived decision batching and deliberate placeholder scaffolding | Evidence for responsibility split; no skill text change |
 
 ## Recording policy
 
