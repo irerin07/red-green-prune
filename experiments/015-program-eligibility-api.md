@@ -103,5 +103,6 @@ No SKILL.md sentence is added: both behaviors are already prohibited. The
 014/015 contrast supports an attention and responsibility-boundary problem
 rather than missing policy. After this evidence is merged, the next change
 should mechanically split cycle integrity, minimal implementation, and test
-pruning into independently triggered skills with a thin entry point. This evidence was recorded in
+pruning into independently triggered skills with a thin entry point. This
+evidence was recorded in
 [PR #23 — Record program eligibility experiment](https://github.com/irerin07/red-green-prune/pull/23).
