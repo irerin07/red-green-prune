@@ -1,33 +1,33 @@
 ---
 name: red-green-prune
 description: >
-  Route the complete Red Green Prune workflow. Use when the user explicitly
-  asks for Red Green Prune or ALIGN -> RED -> GREEN -> REFACTOR -> PRUNE.
-  Delegate detailed policy to focused sibling skills so unrelated policy is
-  not loaded.
+  Develop observable behavior test-first without growing redundant tests. Use
+  when the user asks for Red Green Prune, TDD, RED -> GREEN -> REFACTOR, or
+  focused test cleanup. Load only the sibling skills needed for the task.
 ---
 
 # Red Green Prune
 
-For observable behavior changes, follow:
+For behavior changes, follow:
 
 `ALIGN -> RED -> GREEN -> REFACTOR -> PRUNE`
 
-Do not claim TDD unless RED was observed before the production change.
+The core rules are:
+
+- observe a relevant test failure before editing production;
+- implement only behavior covered by that failing test scope and the request;
+- keep only tests with distinct protective value.
 
 ## Route
 
-Load only the sibling skills needed:
+Load:
 
-- `test-first-cycle` for ALIGN, RED evidence, and rule-by-rule cycles;
-- `minimal-change` for the production edit and REFACTOR;
-- `test-prune` only when new tests may overlap or the user requests test
-  review, parameterization, cleanup, or deletion.
+- `test-first-cycle` and `minimal-change` for behavior changes;
+- `test-prune` when new tests may overlap or the user requests test review,
+  parameterization, cleanup, or deletion;
+- only `minimal-change` for non-behavior changes.
 
-A normal behavior change needs `test-first-cycle` and `minimal-change`.
-Non-behavior changes need only `minimal-change` and relevant verification.
-
-Claude Code also exposes the focused skills directly:
+Focused skills are also available directly:
 
 ```text
 /red-green-prune:test-first-cycle
@@ -35,5 +35,5 @@ Claude Code also exposes the focused skills directly:
 /red-green-prune:test-prune
 ```
 
-Stop when the agreed behavior and relevant checks pass. Combine only applicable
-evidence from the loaded skills; do not add optional improvements.
+Stop when the requested behavior and relevant checks pass. Do not add optional
+improvements or repeat evidence from sibling skills.

@@ -25,6 +25,7 @@ significant benchmarks.
 | [017](017-benefit-eligibility-api.md) | Benefit eligibility API | Routing, decision separation, and late validation improved; status and eligibility were still batched, with incomplete UUID/echo sensitivity | Evidence in [PR #26](https://github.com/irerin07/red-green-prune/pull/26); executable cycle gate in [PR #27](https://github.com/irerin07/red-green-prune/pull/27) |
 | [018](018-training-eligibility-api.md) | Training eligibility API | Authorization gate separated 404/status from business rules and improved sensitivity; reporting remained verbose | [PR #28](https://github.com/irerin07/red-green-prune/pull/28) |
 | [019](019-training-eligibility-matched.md) | Training eligibility matched run | Reporting metrics improved, but a status failure authorized a blocked exact-body assertion | [PR #29](https://github.com/irerin07/red-green-prune/pull/29) |
+| [020](020-training-eligibility-second-matched.md) | Training eligibility second matched run | Test-first behavior passed; repeated matcher-level failure exposed an over-strict evaluation criterion | Test-scope reset in [PR #30](https://github.com/irerin07/red-green-prune/pull/30) |
 
 ## Recording policy
 
