@@ -30,6 +30,7 @@ significant benchmarks.
 | [022](022-real-project-production-scaffolding.md) | Real-project sign-up and member update APIs | Production scaffolding preceded RED twice; service scopes authorized untested HTTP endpoints; follow-up routing was skipped | Clarify routing, scaffolding, and public-boundary scope |
 | [023](023-member-withdrawal-correction.md) | Real-project member withdrawal API | Routing and scaffold discipline passed; blanket thin-controller testing was over-strict; hard deletion was inferred without ALIGN | Remove adapter-test prohibition; clarify destructive ALIGN |
 | [024](024-post-deletion-contract-scope.md) | Real-project post deletion API | A user-deletion pattern was promoted to a repository-wide contract, bypassing destructive ALIGN | Scope destructive contracts to the same resource in [PR #34](https://github.com/irerin07/red-green-prune/pull/34) |
+| [025](025-comment-state-change-and-soft-delete.md) | Real-project comment creation and soft deletion | Creation RED did not observe persisted content or relationships; resource-scoped destructive ALIGN passed | Require direct state-change evidence in [PR #35](https://github.com/irerin07/red-green-prune/pull/35) |
 
 ## Recording policy
 
