@@ -21,7 +21,7 @@ significant benchmarks.
 | [013](013-loan-eligibility-api.md) | Loan eligibility API | RED sequencing improved, but independent rules were batched and task-new tests were relabeled as guards | Evidence only; no skill change ([PR #21](https://github.com/irerin07/red-green-prune/pull/21)) |
 | [014](014-application-decisions-api.md) | Application decisions API | Cycle separation, boundary scoping, and RED reporting passed in a focused scenario | Evidence only; no skill change ([PR #22](https://github.com/irerin07/red-green-prune/pull/22)) |
 | [015](015-program-eligibility-api.md) | Program eligibility API | Slightly higher complexity revived decision batching and deliberate placeholder scaffolding | Responsibility split in [PR #24](https://github.com/irerin07/red-green-prune/pull/24); evidence recorded by [PR #23](https://github.com/irerin07/red-green-prune/pull/23) |
-| [016](016-delivery-eligibility-api.md) | Delivery eligibility API | Focused routing worked and prevented batching/placeholders; the final validation cycle lacked captured pre-production RED evidence | Evidence only; no skill change |
+| [016](016-delivery-eligibility-api.md) | Delivery eligibility API | Focused routing worked and prevented batching/placeholders; the final validation cycle lacked captured pre-production RED evidence | Evidence only; no skill change ([PR #25](https://github.com/irerin07/red-green-prune/pull/25)) |
 
 ## Recording policy
 
