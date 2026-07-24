@@ -81,6 +81,14 @@ unavoidably satisfies another rule, report missed RED for it.
 
 ## Report
 
-During work, emit only the two authorization lines and the GREEN result per
-cycle. Finish with one compact cycle summary, material assumptions, guards or
-missed RED, and anything not verified. Do not repeat the transcript.
+Emit only `RED`, `AUTHORIZED GREEN`, and `GREEN: <command> -> <result>`
+until verification. Then emit:
+
+```text
+VERIFIED: ...
+ASSUMPTIONS: ...
+GUARDS/MISSED RED: ...
+NOT VERIFIED: ...
+```
+
+Omit empty lines; no tables, file lists, or replay.
