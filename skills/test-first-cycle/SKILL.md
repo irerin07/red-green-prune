@@ -1,122 +1,86 @@
 ---
 name: test-first-cycle
 description: >
-  Enforce honest test-first cycles for observable behavior changes. Use for
-  features, bug fixes, APIs, calculations, validation, and other production
-  behavior that must follow ALIGN -> RED -> GREEN. Separate independently
-  falsifiable rules, observe real RED before production, and classify passing
-  scope members, guards, and missed RED without manufacturing failures.
+  Enforce honest test-first cycles for features, bug fixes, APIs,
+  calculations, validation, and other observable behavior changes. Observe a
+  real RED, authorize only the GREEN it proves, and report guards or missed RED
+  honestly without manufacturing failures.
 ---
 
 # Test First Cycle
 
 Repeat `ALIGN -> RED -> GREEN` for one independently falsifiable rule at a
-time. Do not claim TDD unless RED was observed before the production change.
+time. Do not claim TDD unless RED preceded its production change.
 
 ## ALIGN
 
-Before editing:
+Read the affected production path, callers, and nearest tests. Find the test
+command and conventions, state observable success, and resolve repository facts
+yourself. Ask only when plausible answers materially change public behavior,
+data, security, compatibility, persistence, or meaningful UX. Use and report a
+conventional reversible default for minor ambiguity.
 
-1. Read the affected production path, callers, and nearest tests.
-2. Find the repository's test command and conventions.
-3. State the observable success condition.
-4. Resolve repository facts yourself.
-5. Ask only when plausible answers would change public behavior, data,
-   security, compatibility, persistence, or meaningful UX.
+For a new project, establish only the minimum conventional runnable test
+harness. Ask when its choice materially determines the stack; otherwise use
+already selected or ecosystem-standard tooling. Run the empty harness once.
+Setup is not GREEN: do not implement requested behavior.
 
-Use a conventional, reversible default for minor ambiguity and report it. Do
-not ask the user about implementation details discoverable from the repository.
+In an established repository without runnable tests, do not add a framework
+unless requested. Perform the strongest available check and state the limit.
 
 ## RED
 
-Use the smallest test change that exposes the missing behavior:
+Select one rule that could fail while other requested rules pass. Shared
+implementation, one endpoint, one happy path, or one test method does not merge
+independent rules.
 
-1. Run the nearest existing test. If it already fails for the expected
-   behavioral reason, use that failure as RED and add no test.
-2. Otherwise, add one case or assertion to the nearest existing test when it
-   preserves that test's behavioral purpose.
-3. Add one focused test only when no existing test can express the requirement
-   clearly.
+Prefer an existing test already failing for the expected behavioral reason.
+Otherwise add one case or assertion to the nearest suitable test; add one
+focused test only when neither option expresses the rule clearly.
 
-Run it before changing production code. Confirm it fails because the requested
-behavior is missing at the expected boundary. For code that does not yet exist,
-a missing-symbol failure, including the resulting compilation or load failure
-at that boundary, is valid RED. Setup, syntax, and unrelated failures are not.
+For a bug, use the closest stable public boundary unless it is slow,
+unreliable, or cannot isolate the regression.
 
-A passing existing test is not RED. If relevant tests already pass, determine
-whether the behavior exists or the new requirement is not yet expressed.
+Choose the smallest scope that distinguishes correct behavior from a plausible
+nearby defect. Use multiple cases only when they jointly distinguish one rule.
+For generated or mirrored values, reject plausible constants. Do not write the
+full test matrix before the first GREEN.
 
-For a bug, reproduce the failure through the closest stable public boundary.
-Use a lower-level test only when the public test would be slow, unreliable, or
-unable to isolate the regression.
+Run before editing production. Setup, syntax, flaky, unrelated, and
+pre-existing failures are not RED. A missing symbol, route, class, or endpoint,
+including its compilation or load failure, proves only that boundary.
+Assertions blocked behind it prove nothing.
 
-Do not write the full test matrix before the first GREEN. Add the smallest
-independently falsifiable rule or meaningful equivalence class at a time. An
-endpoint, happy path, calculation, or assertion group is not one rule when any
-part could fail while others pass. Shared implementation and later extension
-do not justify batching.
+Before GREEN, record exactly:
 
-For each cycle, state the rule and smallest distinguishing scope, run it, then
-record before editing production:
-`RED observed — rule: ...; scope: ...; failure: ...`.
-Continue only if the scope distinguishes correct behavior from a plausible
-nearby defect and fails because the rule is missing. Split independently
-failing rules and repeat after GREEN. Use multiple cases only when they jointly
-distinguish one boundary or meaningful equivalence rule. The executed command
-is evidence; do not restate it.
+```text
+RED: <command> -> <first relevant failure>
+AUTHORIZED GREEN: <only production behavior that failure proves>
+```
 
-When an absent endpoint, route, class, or symbol blocks the scope, count RED
-only for the selected assertion whose nearby defect the scope distinguishes.
-Assertions blocked behind that absence are not RED evidence for their rules.
+`AUTHORIZED GREEN` is the smallest change capable of resolving the first
+relevant failure. It cannot include behavior the run did not reach. A 404
+authorizes only route/status; blocked fields, calculations, and rules require
+later RED cycles. Do not implement anything outside the authorization.
 
-Do not implement, revert, or mutate production code to manufacture RED. If the
-behavior was already implemented, report the missed RED. Do not run a mutation
-merely to compensate unless the user requested it or the risk independently
-justifies it; any later mutation is sensitivity evidence, not TDD evidence.
+A passing test is not RED. A passing case may belong to the current rule or
+protect pre-existing behavior that GREEN could regress; report the latter as a
+guard. Task-new behavior is never a guard. Report missed RED if it was
+implemented without prior RED.
 
-Do not add a new passing test during RED unless it belongs to the current
-rule's test scope or protects agreed behavior that the upcoming GREEN change
-could otherwise regress. Report the former as a passing scope member, not as a
-separate RED or guard; report the latter as a guard.
-
-A test protecting behavior introduced by the current task is not a guard. Its
-scope must have observed RED before implementation. If that behavior was
-implemented without an observed RED for its scope, report the missed RED
-instead of relabeling the test as a guard.
-
-If RED cannot be observed, state why; never fabricate it.
+Never implement, revert, or mutate production to create failure. Use later
+mutation only when requested or independently justified by risk; it is
+sensitivity evidence, not TDD evidence. If RED cannot be observed, state why.
+Never fabricate it.
 
 ## GREEN transition
 
-After a valid RED, load and follow `minimal-change` for the production edit.
-Run the focused scope and confirm GREEN before selecting the next independently
-falsifiable rule.
-
-If the production edit unavoidably satisfies a later rule, report missed RED
-for that later scope. Do not manufacture a failure or claim it was test-first.
-
-## Test environment
-
-If no runnable test environment exists in an established repository, do not
-introduce one unless requested. Perform the strongest available check and state
-the limitation.
-
-For a new project, establish the minimum runnable test environment during
-ALIGN before the first RED. Ask the user when the choice materially determines
-the project stack; otherwise prefer the ecosystem's standard or already
-selected test tooling. Run the empty test harness once before the first RED to
-confirm the environment itself works. Establishing the environment is not
-GREEN: do not implement requested behavior while setting it up.
-
-Do not treat a flaky failure as RED. Separate unrelated pre-existing failures
-from the requested work.
+Load `minimal-change`. Implement only `AUTHORIZED GREEN`, run the focused
+scope, and confirm GREEN before selecting the next rule. If the minimum change
+unavoidably satisfies another rule, report missed RED for it.
 
 ## Report
 
-Report only applicable cycle evidence:
-
-- material assumption or clarification;
-- RED command and expected failure;
-- GREEN command and passing result;
-- guards or passing scope members that were added;
-- missed RED or anything not verified.
+During work, emit only the two authorization lines and the GREEN result per
+cycle. Finish with one compact cycle summary, material assumptions, guards or
+missed RED, and anything not verified. Do not repeat the transcript.
