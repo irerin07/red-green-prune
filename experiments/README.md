@@ -26,6 +26,7 @@ significant benchmarks.
 | [018](018-training-eligibility-api.md) | Training eligibility API | Authorization gate separated 404/status from business rules and improved sensitivity; reporting remained verbose | [PR #28](https://github.com/irerin07/red-green-prune/pull/28) |
 | [019](019-training-eligibility-matched.md) | Training eligibility matched run | Reporting metrics improved, but a status failure authorized a blocked exact-body assertion | [PR #29](https://github.com/irerin07/red-green-prune/pull/29) |
 | [020](020-training-eligibility-second-matched.md) | Training eligibility second matched run | Test-first behavior passed; repeated matcher-level failure exposed an over-strict evaluation criterion | Test-scope reset in [PR #30](https://github.com/irerin07/red-green-prune/pull/30) |
+| [021](021-training-eligibility-test-scope-reset.md) | Training eligibility test-scope reset | Original-goal compliance held while cost, output, context, and duration fell materially | Evidence only; keep the skill frozen |
 
 ## Recording policy
 
