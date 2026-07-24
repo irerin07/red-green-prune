@@ -129,4 +129,5 @@ batching and placeholder scaffolding seen in Experiment 015.
 The run is still a partial process failure because Cycle 6 has no captured
 pre-production RED execution. No SKILL.md change is made: the required ordering
 is already explicit. Record the failure and repeat the split workflow in a new
-scenario to determine whether it recurs.
+scenario to determine whether it recurs. This evidence was recorded in
+[PR #25 — Record delivery eligibility experiment](https://github.com/irerin07/red-green-prune/pull/25).
