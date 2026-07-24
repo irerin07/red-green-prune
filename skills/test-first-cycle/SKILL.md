@@ -81,8 +81,8 @@ unavoidably satisfies another rule, report missed RED for it.
 
 ## Report
 
-Before final verification, emit only required `RED`, `AUTHORIZED GREEN`, and
-`GREEN: <command> -> <result>` lines. Then emit at most:
+Emit only `RED`, `AUTHORIZED GREEN`, and `GREEN: <command> -> <result>`
+until final verification. Then emit:
 
 ```text
 VERIFIED: ...
@@ -91,4 +91,4 @@ GUARDS/MISSED RED: ...
 NOT VERIFIED: ...
 ```
 
-Omit empty lines; no tables, file lists, or cycle replay.
+Omit empty lines; no tables, file lists, or replay.
