@@ -29,6 +29,7 @@ significant benchmarks.
 | [021](021-training-eligibility-test-scope-reset.md) | Training eligibility test-scope reset | Original-goal compliance held while cost, output, context, and duration fell materially | Evidence only; keep the skill frozen |
 | [022](022-real-project-production-scaffolding.md) | Real-project sign-up and member update APIs | Production scaffolding preceded RED twice; service scopes authorized untested HTTP endpoints; follow-up routing was skipped | Clarify routing, scaffolding, and public-boundary scope |
 | [023](023-member-withdrawal-correction.md) | Real-project member withdrawal API | Routing and scaffold discipline passed; blanket thin-controller testing was over-strict; hard deletion was inferred without ALIGN | Remove adapter-test prohibition; clarify destructive ALIGN |
+| [024](024-post-deletion-contract-scope.md) | Real-project post deletion API | A user-deletion pattern was promoted to a repository-wide contract, bypassing destructive ALIGN | Scope destructive contracts to the same resource in [PR #34](https://github.com/irerin07/red-green-prune/pull/34) |
 
 ## Recording policy
 

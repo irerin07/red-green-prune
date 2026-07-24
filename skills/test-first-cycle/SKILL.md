@@ -17,7 +17,8 @@ compatibility, persistence, or meaningful UX.
 
 For destructive behavior, ask before choosing hard deletion, soft deletion,
 retention, anonymization, or recovery semantics unless an existing contract
-settles them.
+for the same resource or an explicit repository-wide policy settles them. A
+deletion pattern for another resource does not settle the choice.
 
 For a new project, establish only the minimum conventional runnable test
 harness and run it once before the first RED. Setup is not GREEN: do not
