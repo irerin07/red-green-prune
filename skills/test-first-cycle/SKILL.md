@@ -15,6 +15,10 @@ state the observable result. Resolve repository facts yourself. Ask only when
 plausible answers materially change public behavior, data, security,
 compatibility, persistence, or meaningful UX.
 
+For destructive behavior, ask before choosing hard deletion, soft deletion,
+retention, anonymization, or recovery semantics unless an existing contract
+settles them.
+
 For a new project, establish only the minimum conventional runnable test
 harness and run it once before the first RED. Setup is not GREEN: do not
 implement requested behavior while creating the harness.
@@ -44,9 +48,8 @@ If no valid RED can be observed, state why instead of claiming TDD.
 ## GREEN
 
 Load `minimal-change`. Implement only behavior asserted by the failing scope
-and requested by the user. A service-level scope does not authorize an
-unasserted public endpoint or adapter. It is valid to satisfy all assertions in
-that scope in one GREEN. Run the focused scope and confirm it passes.
+and requested by the user. It is valid to satisfy all assertions in that scope
+in one GREEN. Run the focused scope and confirm it passes.
 
 Do not claim test-first for behavior implemented before its test scope was
 observed failing.
