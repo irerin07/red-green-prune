@@ -59,9 +59,8 @@ AUTHORIZED GREEN: <only production behavior that failure proves>
 ```
 
 `AUTHORIZED GREEN` is the smallest change capable of resolving the first
-relevant failure. It cannot include behavior the run did not reach. A failing
-matcher authorizes only what makes it pass; blocked assertions require later
-RED cycles. Do not implement anything outside the authorization.
+relevant failure. It cannot include behavior the run did not reach. A failed matcher
+authorizes only what makes it pass; blocked assertions require later RED. Do not implement anything outside the authorization.
 
 A passing test is not RED. A passing case may belong to the current rule or
 protect pre-existing behavior that GREEN could regress; report the latter as a
