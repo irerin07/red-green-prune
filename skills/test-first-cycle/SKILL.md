@@ -82,7 +82,7 @@ unavoidably satisfies another rule, report missed RED for it.
 ## Report
 
 Emit only `RED`, `AUTHORIZED GREEN`, and `GREEN: <command> -> <result>`
-until final verification. Then emit:
+until verification. Then emit:
 
 ```text
 VERIFIED: ...
