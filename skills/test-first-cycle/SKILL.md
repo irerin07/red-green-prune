@@ -81,14 +81,14 @@ unavoidably satisfies another rule, report missed RED for it.
 
 ## Report
 
-Before final verification, emit only the required `RED` and `AUTHORIZED GREEN`
-lines plus `GREEN: <command> -> <result>`. Then finish with at most:
+Before final verification, emit only required `RED`, `AUTHORIZED GREEN`, and
+`GREEN: <command> -> <result>` lines. Then emit at most:
 
 ```text
-VERIFIED: <observable result and final check>
-ASSUMPTIONS: <material assumptions>
-GUARDS/MISSED RED: <only if applicable>
-NOT VERIFIED: <remaining limits>
+VERIFIED: ...
+ASSUMPTIONS: ...
+GUARDS/MISSED RED: ...
+NOT VERIFIED: ...
 ```
 
-Omit empty optional lines. Do not add tables, file lists, or cycle replays.
+Omit empty lines; no tables, file lists, or cycle replay.
