@@ -20,6 +20,9 @@ The core rules are:
 
 ## Route
 
+Route after the task is known, including when it arrives in a follow-up, and
+load the required sibling skills before any file edit.
+
 Load:
 
 - `test-first-cycle` and `minimal-change` for behavior changes;

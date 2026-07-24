@@ -31,7 +31,9 @@ and create a focused test only when needed.
 Run the scope before editing production. Confirm it fails because the behavior
 is missing. Setup, syntax, flaky, unrelated, and pre-existing failures are not
 RED. A missing symbol or load failure is valid only when the expected
-production boundary does not exist.
+production boundary does not exist. Production DTOs, methods, stubs, routes,
+and adapters are production code; do not add them first just to make RED
+compile.
 
 A scope may contain multiple assertions or cases when they jointly describe one
 observable contract. Use extra cases only to distinguish a meaningful boundary
@@ -42,8 +44,9 @@ If no valid RED can be observed, state why instead of claiming TDD.
 ## GREEN
 
 Load `minimal-change`. Implement only behavior asserted by the failing scope
-and requested by the user. It is valid to satisfy all assertions in that scope
-in one GREEN. Run the focused scope and confirm it passes.
+and requested by the user. A service-level scope does not authorize an
+unasserted public endpoint or adapter. It is valid to satisfy all assertions in
+that scope in one GREEN. Run the focused scope and confirm it passes.
 
 Do not claim test-first for behavior implemented before its test scope was
 observed failing.
