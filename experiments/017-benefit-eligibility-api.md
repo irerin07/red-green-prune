@@ -148,7 +148,8 @@ cycle still batched HTTP status with eligibility even though only the status
 assertion produced RED evidence. UUID generation and expedited passthrough also
 had incomplete defect sensitivity.
 
-No SKILL.md change is made in this evidence PR. The violated rules already
-exist. After recording this run, review whether `test-first-cycle` should be
-compressed from explanatory policy into a shorter executable phase gate rather
-than adding more prohibition text.
+The evidence was recorded without a skill change in
+[PR #26](https://github.com/irerin07/red-green-prune/pull/26). Because the
+violated rules already existed, the resulting change compresses
+`test-first-cycle` into an executable authorization gate instead of adding more
+prohibition text; see [PR #27](https://github.com/irerin07/red-green-prune/pull/27).
