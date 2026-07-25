@@ -34,6 +34,8 @@ significant benchmarks.
 | [026](026-lifecycle-state-coverage.md) | Stateful comment and user-service lifecycle coverage | Active-path tests missed existing absent/deleted states that changed outcomes | Require bounded lifecycle-state coverage in [PR #36](https://github.com/irerin07/red-green-prune/pull/36) |
 | [027](027-unresolved-behavior-decisions.md) | Requirement decisions across resource lifecycle work | Tests could silently settle unspecified public behavior; the workflow did not define repeated cycles | Add task-level ALIGN and per-RED decision gates in [PR #37](https://github.com/irerin07/red-green-prune/pull/37) |
 
+| [028](028-operation-scoped-contracts.md) | Comment service read across active, absent, and deleted states | Lifecycle discovery passed, but absent-read behavior was inferred from other operations | Scope explicit contracts to the resource and operation in [PR #38](https://github.com/irerin07/red-green-prune/pull/38) |
+
 ## Recording policy
 
 Record the request, environment, observed evidence, expected behavior, and any
