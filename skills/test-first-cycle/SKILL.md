@@ -11,14 +11,18 @@ description: >
 ## ALIGN
 
 Read the affected production path and nearest tests. Find the test command and
-state the observable result. Resolve repository facts yourself. Ask only when
-plausible answers materially change public behavior, data, security,
-compatibility, persistence, or meaningful UX.
+state the observable result. Resolve repository facts yourself.
 
-For destructive behavior, ask before choosing hard deletion, soft deletion,
-retention, anonymization, or recovery semantics unless an existing contract
-for the same resource or an explicit repository-wide policy settles them. A
-deletion pattern for another resource does not settle the choice.
+Identify choices that span the whole task and would require different
+assertions. For destructive behavior, this includes hard deletion, soft
+deletion, retention, anonymization, or recovery semantics. Resolve them from
+the request or an applicable explicit contract; a pattern for another resource
+does not settle the choice. Ask unresolved choices together before the first
+RED.
+
+An explicit contract is an existing test or user-facing documentation that
+directly settles the choice for this resource, or an explicit repository-wide
+policy. A repeated implementation pattern alone is not a contract.
 
 For a new project, establish only the minimum conventional runnable test
 harness and run it once before the first RED. Setup is not GREEN: do not
@@ -28,6 +32,21 @@ In an established repository without runnable tests, do not add a framework
 unless requested. Perform the strongest available check and state the limit.
 
 ## RED
+
+Before each RED, identify preconditions that could change the expected
+outcome—for example, the target is absent, already in the target state, or the
+request is partially specified.
+
+If multiple plausible outcomes would require different assertions, resolve the
+choice from the request or an applicable explicit contract. Ask only when
+neither does.
+
+If this gate finds an unresolved choice, raise it immediately and pause the
+affected behavior. Continue only work that is clearly independent of it. If
+independence is unclear, stop.
+
+Do not settle it by asserting one of the candidates. Reporting the choice after
+implementation is not a substitute for asking.
 
 Select or write the smallest test scope that expresses the requested behavior.
 Prefer an existing failing test, then a case or assertion in the nearest test,
@@ -67,7 +86,8 @@ observed failing.
 ## REFACTOR AND REPORT
 
 Refactor only while tests are green and only when the current change needs it.
-Run the relevant tests afterward.
+Run the relevant tests afterward. If requested behavior remains, return to RED
+for the next smallest scope.
 
 Report the RED command and reason, final verification, material assumptions,
-and anything not verified once. Do not replay every cycle.
+and anything not verified once after all cycles. Do not replay every cycle.

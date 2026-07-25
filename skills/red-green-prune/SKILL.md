@@ -10,7 +10,7 @@ description: >
 
 For behavior changes, follow:
 
-`ALIGN -> RED -> GREEN -> REFACTOR -> PRUNE`
+`ALIGN -> (RED -> GREEN -> REFACTOR)* -> PRUNE`
 
 The core rules are:
 
