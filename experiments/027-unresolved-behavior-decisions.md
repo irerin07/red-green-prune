@@ -39,9 +39,9 @@ the RED/GREEN cycles. Decision discovery instead needs two levels:
 - a gate before each RED identifies preconditions that change the selected
   behavior's expected outcome.
 
-An explicit contract must directly settle the choice. A test or user-facing
-documentation applicable to the resource can do so, as can an explicit
-repository-wide policy. Repeated code shape alone cannot.
+An explicit contract must directly settle the choice. An existing test or
+user-facing documentation that directly settles it for this resource can do so,
+as can an explicit repository-wide policy. Repeated code shape alone cannot.
 
 When a decision appears after ALIGN, the affected behavior must pause and the
 question must be raised immediately. Work may continue only when it is clearly
