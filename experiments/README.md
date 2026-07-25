@@ -33,6 +33,8 @@ significant benchmarks.
 | [025](025-comment-state-change-and-soft-delete.md) | Real-project comment creation and soft deletion | Creation RED did not observe persisted content or relationships; resource-scoped destructive ALIGN passed | Require direct state-change evidence in [PR #35](https://github.com/irerin07/red-green-prune/pull/35) |
 | [026](026-lifecycle-state-coverage.md) | Stateful comment and user-service lifecycle coverage | Active-path tests missed existing absent/deleted states that changed outcomes | Require bounded lifecycle-state coverage in [PR #36](https://github.com/irerin07/red-green-prune/pull/36) |
 
+| [027](027-unresolved-behavior-decisions.md) | Requirement decisions across resource lifecycle work | Tests could silently settle unspecified public behavior; the workflow did not define repeated cycles | Add task-level ALIGN and per-RED decision gates in [PR #37](https://github.com/irerin07/red-green-prune/pull/37) |
+
 ## Recording policy
 
 Record the request, environment, observed evidence, expected behavior, and any
