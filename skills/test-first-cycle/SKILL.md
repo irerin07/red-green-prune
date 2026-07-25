@@ -21,7 +21,8 @@ does not settle the choice. Ask unresolved choices together before the first
 RED.
 
 An explicit contract is an existing test or user-facing documentation that
-directly settles the choice for this resource, or an explicit repository-wide
+directly settles the choice for this resource and operation, or an explicit
+repository-wide
 policy. A repeated implementation pattern alone is not a contract.
 
 For a new project, establish only the minimum conventional runnable test
