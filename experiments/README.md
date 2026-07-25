@@ -31,7 +31,7 @@ significant benchmarks.
 | [023](023-member-withdrawal-correction.md) | Real-project member withdrawal API | Routing and scaffold discipline passed; blanket thin-controller testing was over-strict; hard deletion was inferred without ALIGN | Remove adapter-test prohibition; clarify destructive ALIGN |
 | [024](024-post-deletion-contract-scope.md) | Real-project post deletion API | A user-deletion pattern was promoted to a repository-wide contract, bypassing destructive ALIGN | Scope destructive contracts to the same resource in [PR #34](https://github.com/irerin07/red-green-prune/pull/34) |
 | [025](025-comment-state-change-and-soft-delete.md) | Real-project comment creation and soft deletion | Creation RED did not observe persisted content or relationships; resource-scoped destructive ALIGN passed | Require direct state-change evidence in [PR #35](https://github.com/irerin07/red-green-prune/pull/35) |
-| [026](026-lifecycle-state-coverage.md) | Stateful comment and user-service lifecycle coverage | Active-path tests missed existing absent/deleted states that changed outcomes | Require bounded lifecycle-state coverage in [PR #36](https://github.com/irerin07/red-green-prune/pull/36) |
+| [026](026-lifecycle-state-coverage.md) | Stateful comment and user-service lifecycle coverage | Active-path tests missed lifecycle states; tests could silently settle unspecified outcomes | Add bounded state coverage and pre-RED decision gates in [PR #36](https://github.com/irerin07/red-green-prune/pull/36) |
 
 ## Recording policy
 
