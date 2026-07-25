@@ -44,6 +44,11 @@ A scope may contain multiple assertions or cases when they jointly describe one
 observable contract. Use extra cases only to distinguish a meaningful boundary
 or plausible constant implementation; do not create a full matrix by default.
 
+For state-changing behavior, make the failing scope observe the requested state
+or the value sent to the persistence boundary. A status, generated identifier,
+or mocked return value alone does not prove that requested fields or
+relationships were applied.
+
 If no valid RED can be observed, state why instead of claiming TDD.
 
 ## GREEN
